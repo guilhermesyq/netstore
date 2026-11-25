@@ -6,6 +6,9 @@
     $stmtQtdCar->execute([$_SESSION['usuario_id']]);
     $qtdCarrinho = (int)$stmtQtdCar->fetchColumn();
   }
+
+  $toastSucessoSessao = $_SESSION['toast_sucesso'] ?? '';
+  unset($_SESSION['toast_sucesso']);
 ?>
 <header class="border-b border-zinc-800 bg-zinc-900">
   <div class="flex flex-wrap items-center justify-between gap-6 px-6 py-5 lg:px-12">
@@ -138,6 +141,11 @@
     };
 
     toastClose.addEventListener('click', esconderToast);
+
+    const pendenteSessao = <?= json_encode($toastSucessoSessao, JSON_UNESCAPED_UNICODE) ?>;
+    if (pendenteSessao) {
+      window.mostrarToast(pendenteSessao);
+    }
 
     const pendente = sessionStorage.getItem('netstore_toast');
     if (pendente) {

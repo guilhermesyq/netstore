@@ -20,6 +20,7 @@
       $stmt = $conn->prepare("INSERT INTO usuarios(nome, usuario, email, senha_hash, is_admin) VALUES (?, ?, ?, ?, false)");
       $stmt->execute([$nome, $user, $email, $senhaHash]);
 
+      $_SESSION['toast_sucesso'] = 'Cadastro realizado com sucesso! Faça login para continuar.';
       header("Location: /netstore/login");
       exit;
     } catch (PDOException $e) {

@@ -20,6 +20,7 @@
       $_SESSION['usuario_id'] = $user['id'];
       $_SESSION['usuario_nome'] = $user['nome'];
       $_SESSION['is_admin'] = $user['is_admin'];
+      $_SESSION['toast_sucesso'] = 'Login realizado com sucesso!';
 
       header("Location: /netstore/home");
       exit;
