@@ -2,6 +2,17 @@
 
 Loja digital de jogos desenvolvida com **PHP**, **MySQL (PDO)**, **Tailwind CSS** e **JavaScript**, rodando em ambiente local com **XAMPP** e rotas amigáveis via `.htaccess`.
 
+## Capturas de tela
+
+### Catálogo de jogos e filtros
+![Catálogo de jogos](docs/screenshots/catalogo.jpg)
+
+### Detalhes do jogo e galeria
+![Detalhes do jogo](docs/screenshots/detalhes-jogo.jpg)
+
+### Painel administrativo (edição de jogo)
+![Edição de jogo](docs/screenshots/editar-jogo.jpg)
+
 ## Funcionalidades
 
 ### Visitante
