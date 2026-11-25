@@ -1,0 +1,14 @@
+# Variáveis de ambiente locais
+.env
+
+# Uploads enviados pelo sistema (mantém apenas a estrutura da pasta)
+uploads/jogos/*
+!uploads/jogos/.gitkeep
+
+# Arquivos de sistema e IDEs
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.log

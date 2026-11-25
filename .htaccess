@@ -1,0 +1,27 @@
+RewriteEngine On
+
+# Compatibilidade com URLs antigas de imagens (/netstore/assets/jogos/...)
+RewriteCond %{REQUEST_URI} ^/netstore/assets/jogos/(.+)$
+RewriteCond %{DOCUMENT_ROOT}/netstore/uploads/jogos/%1 -f
+RewriteCond %{HTTP_REFERER} ^https?://(localhost|127\.0\.0\.1)(:[0-9]+)?/netstore/ [NC]
+RewriteRule ^assets/jogos/(.+)$ uploads/jogos/$1 [L]
+
+# Assets estáticos e uploads de jogos (apenas quando acessados pela aplicação)
+RewriteCond %{REQUEST_URI} ^/netstore/(assets|uploads)/
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{HTTP_REFERER} ^https?://(localhost|127\.0\.0\.1)(:[0-9]+)?/netstore/ [NC]
+RewriteRule ^ - [L]
+
+# Rotas de páginas
+RewriteRule ^home$ pages/home.php [L]
+
+RewriteCond %{DOCUMENT_ROOT}/netstore/pages/$1.php -f
+RewriteRule ^([^/]+)$ pages/$1.php [L]
+
+# Rotas de ações (endpoints)
+RewriteCond %{DOCUMENT_ROOT}/netstore/actions/$1.php -f
+RewriteRule ^action/([^/]+)$ actions/$1.php [L]
+
+# Bloqueia acesso direto a pastas internas (config, database, helpers, components, .env)
+RewriteCond %{ENV:REDIRECT_STATUS} ^$
+RewriteRule ^ /netstore/home [R=302,L]
